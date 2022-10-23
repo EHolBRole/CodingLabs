@@ -11,12 +11,12 @@ def encrypt_vigenere(plaintext = "", keyword = "") -> str:
     """
     ciphertext = ""
     i = 0
-    while(len(plaintext) > len(keyword)):
+    while len(plaintext) > len(keyword):
         keyword += keyword[i]
         i += 1
     for i in range(0, len(plaintext)):
-        if(plaintext[i].isalpha()):
-            if(plaintext[i].isupper()):
+        if plaintext[i].isalpha():
+            if plaintext[i].isupper():
                 ciphertext += chr((ord(plaintext[i]) + (ord(keyword[i]) - 65) - 64) % 26 + 64)
             else:
                 ciphertext += chr((ord(plaintext[i]) + (ord(keyword[i]) - 97) - 97) % 26 + 97)
@@ -38,12 +38,12 @@ def decrypt_vigenere(ciphertext = '', keyword = ''):
     """
     plaintext = ""
     i = 0
-    while (len(ciphertext) > len(keyword)):
+    while len(ciphertext) > len(keyword):
         keyword += keyword[i]
         i += 1
     for i in range(0, len(ciphertext)):
-        if (ciphertext[i].isalpha()):
-            if (ciphertext[i].isupper()):
+        if ciphertext[i].isalpha():
+            if ciphertext[i].isupper():
                 plaintext += chr((ord(ciphertext[i]) - (ord(keyword[i]) - 65) - 64) % 26 + 64)
             else:
                 plaintext += chr((ord(ciphertext[i]) - (ord(keyword[i]) - 97) - 97) % 26 + 97)

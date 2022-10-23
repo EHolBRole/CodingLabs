@@ -13,7 +13,7 @@ def is_prime(n: int):
     >>> is_prime(8)
     False
     """
-    if(n == 2):
+    if n == 2:
         return True
     for i in range(2, n // 2):
         if(n % i == 0):
@@ -31,7 +31,7 @@ def gcd(a: int, b: int) -> int:
     1
     """
     # PUT YOUR CODE HERE
-    while(a % b != 0):
+    while a % b != 0:
         c = a % b
         a = b
         b = c
@@ -86,7 +86,7 @@ def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[in
 
     # Return public and private keypair
     # Public key is (e, n) and private key is (d, n)
-    return ((e, n), (d, n))
+    return (e, n), (d, n)
 
 
 def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
