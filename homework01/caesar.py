@@ -20,7 +20,7 @@ def encrypt_caesar(plaintext="", shift=3):
             if c.isupper():
                 ciphertext += chr((ord(c) + shift - 64) % 26 + 64)
             else:
-                ciphertext += chr((ord(c) + shift - 97) % 25 + 97)
+                ciphertext += chr((ord(c) + shift - 97) % 26 + 97)
         else:
             ciphertext += c
     return ciphertext
