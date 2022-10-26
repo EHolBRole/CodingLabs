@@ -44,7 +44,7 @@ def decrypt_caesar(ciphertext="", shift=3):
     for c in ciphertext:
         if c.isalpha():
             if c.isupper():
-                plaintext += chr((ord(c) - shift - 64) % 26 + 64)
+                plaintext += chr((ord(c) - shift - 65) % 26 + 65)
             else:
                 plaintext += chr((ord(c) - shift - 97) % 26 + 97)
         else:
