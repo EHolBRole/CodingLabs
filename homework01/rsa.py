@@ -31,6 +31,8 @@ def gcd(a: int, b: int) -> int:
     1
     """
     # PUT YOUR CODE HERE
+    if a == 0 or b == 0:
+        return 0
     while a % b != 0:
         c = a % b
         a = b
@@ -103,7 +105,7 @@ def decrypt(pk: tp.Tuple[int, int], ciphertext: tp.List[int]) -> str:
     # Unpack the key into its components
     key, n = pk
     # Generate the plaintext based on the ciphertext and key using a^b mod m
-    plain = [chr((char**key) % n) for char in ciphertext]
+    plain = [chr((char ** key) % n) for char in ciphertext]
     # Return the array of bytes as a string
     return "".join(plain)
 
