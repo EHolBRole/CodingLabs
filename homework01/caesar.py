@@ -1,7 +1,7 @@
 import typing as tp
 
 
-def encrypt_caesar(plaintext="", key=3):
+def encrypt_caesar(plaintext="", shift=3):
     """
     Encrypts plaintext using a Caesar cipher.
 
@@ -18,15 +18,15 @@ def encrypt_caesar(plaintext="", key=3):
     for c in plaintext:
         if c.isalpha():
             if c.isupper():
-                ciphertext += chr((ord(c) + key - 64) % 26 + 64)
+                ciphertext += chr((ord(c) + shift - 64) % 26 + 64)
             else:
-                ciphertext += chr((ord(c) + key - 97) % 26 + 97)
+                ciphertext += chr((ord(c) + shift - 97) % 26 + 97)
         else:
             ciphertext += c
     return ciphertext
 
 
-def decrypt_caesar(ciphertext="", key=3):
+def decrypt_caesar(ciphertext="", shift=3):
     """
     Decrypts a ciphertext using a Caesar cipher.
 
@@ -44,9 +44,9 @@ def decrypt_caesar(ciphertext="", key=3):
     for c in ciphertext:
         if c.isalpha():
             if c.isupper():
-                plaintext += chr((ord(c) - key - 64) % 26 + 64)
+                plaintext += chr((ord(c) - shift - 64) % 26 + 64)
             else:
-                plaintext += chr((ord(c) - key - 97) % 26 + 97)
+                plaintext += chr((ord(c) - shift - 97) % 26 + 97)
         else:
             plaintext += c
 
