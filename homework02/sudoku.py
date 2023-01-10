@@ -1,8 +1,6 @@
 import pathlib
-
 import random as r
 import typing as tp
-
 
 T = tp.TypeVar("T")
 
