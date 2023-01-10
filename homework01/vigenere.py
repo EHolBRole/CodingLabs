@@ -11,6 +11,8 @@ def encrypt_vigenere(plaintext="", keyword="") -> str:
     """
     ciphertext = ""
     i = 0
+    # abra abra abra test test
+    # abra abra abra test test
     while len(plaintext) > len(keyword):
         keyword += keyword[i]
         i += 1
