@@ -43,14 +43,14 @@ def group(values: tp.List[T], n: int) -> tp.List[tp.List[T]]:
     >>> group([1,2,3,4,5,6,7,8,9], 3)
     [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     """
-    matrix = List
+    matrix = tp.List[T]
     counter = 0
-    row: List
+    row = tp.List[T]
     n = n
     for el in values:
         if counter == n:
             matrix.append(row)
-            row = []
+            row = tp.List[T]
             counter = 0
         row.append(el)
         counter += 1
@@ -97,7 +97,7 @@ def get_block(grid: tp.List[tp.List[str]], pos: tp.Tuple[int, int]) -> tp.List[s
     >>> get_block(grid, (8, 8))
     ['2', '8', '.', '.', '.', '5', '.', '7', '9']
     """
-    block = []
+    block = tp.List[T]
 
     block_pos = [(pos[0] + 1), (pos[1] + 1)]
     while block_pos[0] % 3 != 0:
