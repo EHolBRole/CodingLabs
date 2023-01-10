@@ -45,12 +45,13 @@ def group(values: tp.List[T], n: int) -> tp.List[tp.List[T]]:
     """
     matrix = list()
     counter = 0
+    row: tp.List[str]
     row = list()
     n = n
     for el in values:
         if counter == n:
             matrix.append(row)
-            row = tp.List[T]
+            row = list()
             counter = 0
         row.append(el)
         counter += 1
