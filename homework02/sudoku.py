@@ -1,5 +1,6 @@
 import pathlib
-import random
+
+import random as r
 import typing as tp
 
 
@@ -285,8 +286,8 @@ def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
         k_empty = 81 - min(81, N)
 
         while k_empty != 0:
-            row = random.randint(0, 8)
-            col = random.randint(0, 8)
+            row = r.randint(0, 8)
+            col = r.randint(0, 8)
             if grid[row][col] != ".":
                 grid[row][col] = "."
                 k_empty -= 1
