@@ -123,7 +123,7 @@ def find_empty_positions(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.Tuple[in
     """
     for r in range(0, len(grid)):
         for c in range(0, len(grid[r])):
-            if grid[r][c] == '.':
+            if grid[r][c] == ".":
                 return r, c
     a = 2
     return -1, -1
@@ -178,7 +178,7 @@ def find_possible_values(grid: tp.List[tp.List[str]], pos: tp.Tuple[int, int]) -
 
 
 def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
-    """ Решение пазла, заданного в grid """
+    """Решение пазла, заданного в grid"""
     """ Как решать Судоку?
         1. Найти свободную позицию
         2. Найти все возможные значения, которые могут находиться на этой позиции
@@ -210,12 +210,12 @@ def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
 
 
 def check_solution(solution: tp.List[tp.List[str]]) -> bool:
-    """ Если решение solution верно, то вернуть True, в противном случае False """
+    """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
 
     for i in range(0, 9):
         row = get_row(solution, (i, i))
-        values = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}
+        values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
         col = get_col(solution, (i, i))
         for r in row:
             inValues = False
@@ -227,7 +227,7 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
             if not inValues:
                 return False
 
-        values = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}
+        values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
         for c in col:
             inValues = False
@@ -239,10 +239,10 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
             if not inValues:
                 return False
 
-        if (i+1) % 3 == 0:
+        if (i + 1) % 3 == 0:
             block = get_block(solution, (i, i))
 
-            values = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}
+            values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
             for b in block:
                 inValues = False
