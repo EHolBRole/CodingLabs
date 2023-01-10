@@ -43,9 +43,9 @@ def group(values: tp.List[T], n: int) -> tp.List[tp.List[T]]:
     >>> group([1,2,3,4,5,6,7,8,9], 3)
     [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     """
-    matrix = []
+    matrix = List
     counter = 0
-    row = []
+    row: List
     n = n
     for el in values:
         if counter == n:
