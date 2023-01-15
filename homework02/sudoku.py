@@ -45,7 +45,6 @@ def group(values: tp.List[T], n: int) -> tp.List[tp.List[T]]:
     """
     matrix = list()
     counter = 0
-    row: tp.List[T]
     row = list()
     n = n
     for el in values:
