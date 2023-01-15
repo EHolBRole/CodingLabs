@@ -47,7 +47,6 @@ def group(values: tp.List[T], n: int) -> tp.List[tp.List[T]]:
     counter = 0
     row: tp.List[T]
     row = list()
-    n = n
     for el in values:
         if counter == n:
             matrix.append(row)
@@ -122,11 +121,10 @@ def find_empty_positions(grid: tp.List[tp.List[str]]) -> tp.Tuple[int, int]:
     >>> find_empty_positions([['1', '2', '3'], ['4', '5', '6'], ['.', '8', '9']])
     (2, 0)
     """
-    for r in range(0, len(grid)):
-        for c in range(0, len(grid[r])):
-            if grid[r][c] == ".":
-                return r, c
-    a = 2
+    for row in range(0, len(grid)):
+        for col in range(0, len(grid[row])):
+            if grid[row][col] == ".":
+                return row, col
     return int(-1), int(-1)
 
 
@@ -192,18 +190,18 @@ def solve(grid: tp.List[tp.List[str]]) -> tp.List[tp.List[str]]:
     [['5', '3', '4', '6', '7', '8', '9', '1', '2'], ['6', '7', '2', '1', '9', '5', '3', '4', '8'], ['1', '9', '8', '3', '4', '2', '5', '6', '7'], ['8', '5', '9', '7', '6', '1', '4', '2', '3'], ['4', '2', '6', '8', '5', '3', '7', '9', '1'], ['7', '1', '3', '9', '2', '4', '8', '5', '6'], ['9', '6', '1', '5', '3', '7', '2', '8', '4'], ['2', '8', '7', '4', '1', '9', '6', '3', '5'], ['3', '4', '5', '2', '8', '6', '1', '7', '9']]
     """
     pos = find_empty_positions(grid)
-    a = int(-1), int(-1)
-    if pos != a:
+    filled = int(-1), int(-1)
+    if pos != filled:
         posval = find_possible_values(grid, pos)
         for val in posval:
             grid[pos[0]][pos[1]] = val
             grid = solve(grid)
             pos2 = find_empty_positions(grid)
-            if pos2 == a:
+            if pos2 == filled:
                 return grid
-        ala = find_empty_positions(grid)
-        a = int(-1), int(-1)
-        if ala != a:
+        pos2 = find_empty_positions(grid)
+        filled = int(-1), int(-1)
+        if pos2 != filled:
             grid[pos[0]][pos[1]] = "."
         return grid
     else:
@@ -213,7 +211,6 @@ def solve(grid: tp.List[tp.List[str]]) -> tp.List[tp.List[str]]:
 def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
-
     for i in range(0, 9):
         row = get_row(solution, (i, i))
         values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
@@ -227,9 +224,7 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
                     break
             if not inValues:
                 return False
-
         values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
-
         for c in col:
             inValues = False
             for v in values:
@@ -239,12 +234,9 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
                     break
             if not inValues:
                 return False
-
         if (i + 1) % 3 == 0:
             block = get_block(solution, (i, i))
-
             values = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
-
             for b in block:
                 inValues = False
                 for v in values:
@@ -254,7 +246,6 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
                         break
                 if not inValues:
                     return False
-
     return True
 
 
@@ -280,20 +271,16 @@ def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
     True
     """
     empty = [["." for i in range(9)] for j in range(9)]
-    grid = solve(empty)
-    if grid is not None:
-        k_empty = 81 - min(81, N)
 
-        while k_empty != 0:
-            row = r.randint(0, 8)
-            col = r.randint(0, 8)
-            if grid[row][col] != ".":
-                grid[row][col] = "."
-                k_empty -= 1
-        return grid
-    else:
-        return []
-    pass
+    grid = solve(empty)
+    k_empty = 81 - min(81, N)
+    while k_empty != 0:
+        row = r.randint(0, 8)
+        col = r.randint(0, 8)
+        if grid[row][col] != ".":
+            grid[row][col] = "."
+            k_empty -= 1
+    return grid
 
 
 if __name__ == "__main__":
