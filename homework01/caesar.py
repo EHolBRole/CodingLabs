@@ -18,7 +18,7 @@ def encrypt_caesar(plaintext="", shift=3):
     for c in plaintext:
         if c.isalpha():
             if c.isupper():
-                ciphertext += chr((ord(c) + shift - 64) % 26 + 64)
+                ciphertext += chr((ord(c) + shift - 65) % 26 + 65)
             else:
                 ciphertext += chr((ord(c) + shift - 97) % 26 + 97)
         else:
