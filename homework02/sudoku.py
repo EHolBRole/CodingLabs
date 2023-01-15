@@ -273,13 +273,13 @@ def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
     empty = [["." for i in range(9)] for j in range(9)]
 
     grid = solve(empty)
-    k_empty = 81 - min(81, N)
-    while k_empty != 0:
+    to_empty = 81 - min(81, N)
+    while to_empty != 0:
         row = r.randint(0, 8)
         col = r.randint(0, 8)
         if grid[row][col] != ".":
             grid[row][col] = "."
-            k_empty -= 1
+            to_empty -= 1
     return grid
 
 
