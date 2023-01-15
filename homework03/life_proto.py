@@ -61,7 +61,7 @@ class GameOfLife:
             clock.tick(self.speed)
         pygame.quit()
 
-    def create_grid(self, randomize: bool = False) -> Grid:
+    def create_grid(self, randomize: bool = False):
         """
         Создание списка клеток.
 
@@ -79,7 +79,13 @@ class GameOfLife:
         out : Grid
             Матрица клеток размером `cell_height` х `cell_width`.
         """
-        pass
+        global Grid
+        Grid = [[0 for el in self.cell_width] for raw in self.cell_height]
+        if randomize:
+            for raw in range(0, len(Grid)):
+                for el in range(0, len(Grid[raw])):
+                    Grid[raw][el] = random.randint(0, 1)
+        return Grid
 
     def draw_grid(self) -> None:
         """
