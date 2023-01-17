@@ -108,10 +108,11 @@ class GameOfLife:
                         (x, y, self.cell_size - 1, self.cell_size - 1),
                     )
                 else:
-                    pygame.draw.rect(self.screen,
-                                     pygame.Color("green"),
-                                     (x, y, self.cell_size - 1, self.cell_size - 1),
-                                     )
+                    pygame.draw.rect(
+                        self.screen,
+                         pygame.Color("green"),
+                         (x, y, self.cell_size - 1, self.cell_size - 1),
+                    )
                 x += self.cell_size
             y += self.cell_size
             x = 1

@@ -29,10 +29,11 @@ class GUI(UI):
         for raw in self.life.curr_generation:
             for el in raw:
                 if el == 0:
-                    pygame.draw.rect(self.screen,
-                                     pygame.Color("white"),
-                                     (x, y, self.cell_size - 1, self.cell_size - 1),
-                                     )
+                    pygame.draw.rect(
+                        self.screen,
+                         pygame.Color("white"),
+                         (x, y, self.cell_size - 1, self.cell_size - 1),
+                    )
                 else:
                     pygame.draw.rect(
                         self.screen,
