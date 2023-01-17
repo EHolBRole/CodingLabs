@@ -9,12 +9,12 @@ class Console(UI):
         super().__init__(life)
 
     def draw_borders(self, screen) -> None:
-        """ Отобразить рамку. """
+        """Отобразить рамку."""
         screen.border("|", "|", "-", "-", "+", "+", "+", "+")
         pass
 
     def draw_grid(self, screen) -> None:
-        """ Отобразить состояние клеток. """
+        """Отобразить состояние клеток."""
         for row in range(self.life.rows):
             for col in range(self.life.cols):
                 if self.life.curr_generation[row][col] == 1:
@@ -33,6 +33,7 @@ class Console(UI):
             if screen.getch() == 32:
                 curses.endwin()
                 break
+
 
 life = GameOfLife((24, 80), max_generations=50)
 ui = Console(life)

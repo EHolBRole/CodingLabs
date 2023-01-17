@@ -35,14 +35,14 @@ class GameOfLife:
         self.grid = tp.List[tp.List[int]]
 
     def draw_lines(self) -> None:
-        """ Отрисовать сетку """
+        """Отрисовать сетку"""
         for x in range(0, self.width, self.cell_size):
             pygame.draw.line(self.screen, pygame.Color("black"), (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
             pygame.draw.line(self.screen, pygame.Color("black"), (0, y), (self.width, y))
 
     def run(self) -> None:
-        """ Запустить игру """
+        """Запустить игру"""
         pygame.init()
         clock = pygame.time.Clock()
         pygame.display.set_caption("Game of Life")
@@ -64,7 +64,6 @@ class GameOfLife:
             # PUT YOUR CODE HERE
             self.draw_grid()
             self.grid = self.get_next_generation()
-            #print(self.get_neighbours((self.cell_height - 1, self.cell_width - 1)))
             pygame.display.flip()
             clock.tick(self.speed)
         pygame.quit()
@@ -103,9 +102,16 @@ class GameOfLife:
         for raw in self.grid:
             for el in raw:
                 if el == 0:
-                    pygame.draw.rect(self.screen, pygame.Color("white"), (x, y, self.cell_size - 1, self.cell_size - 1))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("white"),
+                        (x, y, self.cell_size - 1, self.cell_size - 1),
+                    )
                 else:
-                    pygame.draw.rect(self.screen, pygame.Color("green"), (x, y, self.cell_size - 1, self.cell_size - 1))
+                    pygame.draw.rect(self.screen,
+                                     pygame.Color("green"),
+                                     (x, y, self.cell_size - 1, self.cell_size - 1),
+                                     )
                 x += self.cell_size
             y += self.cell_size
             x = 1

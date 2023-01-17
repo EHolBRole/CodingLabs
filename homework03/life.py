@@ -16,7 +16,7 @@ class GameOfLife:
             self,
             size: tp.Tuple[int, int],
             randomize: bool = True,
-            max_generations: tp.Optional[float] = float('inf'),
+            max_generations: tp.Optional[float] = float("inf"),
     ) -> None:
         # Размер клеточного поля
         self.rows, self.cols = size
@@ -56,7 +56,10 @@ class GameOfLife:
             row_list = []
             for col in range(0, self.cols):
                 neighbours = self.get_neighbours((row, col))
-                if sum(neighbours) == 3 or sum(neighbours) == 2 and self.curr_generation[row][col] == 1:
+                if (
+                        sum(neighbours) == 3
+                        or (sum(neighbours) == 2 and self.curr_generation[row][col] == 1)
+                ):
                     row_list.append(1)
                 else:
                     row_list.append(0)

@@ -29,9 +29,16 @@ class GUI(UI):
         for raw in self.life.curr_generation:
             for el in raw:
                 if el == 0:
-                    pygame.draw.rect(self.screen, pygame.Color("white"), (x, y, self.cell_size - 1, self.cell_size - 1))
+                    pygame.draw.rect(self.screen,
+                                     pygame.Color("white"),
+                                     (x, y, self.cell_size - 1, self.cell_size - 1),
+                                     )
                 else:
-                    pygame.draw.rect(self.screen, pygame.Color("green"), (x, y, self.cell_size - 1, self.cell_size - 1))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("green"),
+                        (x, y, self.cell_size - 1, self.cell_size - 1),
+                    )
                 x += self.cell_size
             y += self.cell_size
             x = 1
@@ -80,6 +87,6 @@ class GUI(UI):
         pass
 
 
-game = GameOfLife(size=(25, 25),randomize=True)
+game = GameOfLife(size=(25, 25), randomize=True)
 gui = GUI(life=game, cell_size=20, speed=5)
 gui.run()
