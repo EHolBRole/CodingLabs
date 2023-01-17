@@ -100,7 +100,7 @@ class GameOfLife:
         y = 1
         for raw in range(0, self.grid):
             for el in (0, len(raw)):
-                if el == 0:
+                if self.grid[raw][el] == 0:
                     pygame.draw.rect(
                         self.screen,
                         pygame.Color("white"),
