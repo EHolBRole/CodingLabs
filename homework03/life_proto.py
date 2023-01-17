@@ -98,9 +98,9 @@ class GameOfLife:
         """
         x = 1
         y = 1
-        for raw in range(0, self.grid):
+        for raw in range(0, self.grid): #type: ignore
             for el in (0, len(raw)):
-                if self.grid[raw][el] == 0:
+                if self.grid[raw][el] == 0: #type: ignore
                     pygame.draw.rect(
                         self.screen,
                         pygame.Color("white"),
@@ -142,7 +142,7 @@ class GameOfLife:
             for col in range(-1, 2):
                 if cell[1] + col < 0 or cell[1] + col >= self.cell_width or row == 0 and col == 0:
                     continue
-                neighbours.append(self.grid[row + cell[0]][col + cell[1]])
+                neighbours.append(self.grid[row + cell[0]][col + cell[1]]) #type: ignore
         return neighbours
 
     def get_next_generation(self):
