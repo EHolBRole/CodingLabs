@@ -58,7 +58,6 @@ class GameOfLife:
                 if event.type == pygame.QUIT:
                     running = False
             self.draw_lines()
-
             # Отрисовка списка клеток
             # Выполнение одного шага игры (обновление состояния ячеек)
             # PUT YOUR CODE HERE
@@ -99,8 +98,8 @@ class GameOfLife:
         """
         x = 1
         y = 1
-        for raw in self.grid:
-            for el in raw:
+        for raw in range(0, self.grid):
+            for el in (0, len(raw)):
                 if el == 0:
                     pygame.draw.rect(
                         self.screen,
