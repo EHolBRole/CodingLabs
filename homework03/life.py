@@ -57,7 +57,7 @@ class GameOfLife:
             for col in range(0, self.cols):
                 neighbours = self.get_neighbours((row, col))
                 if sum(neighbours) == 3 or (
-                        sum(neighbours) == 2 and self.curr_generation[row][col] == 1
+                    sum(neighbours) == 2 and self.curr_generation[row][col] == 1
                 ):
                     row_list.append(1)
                 else:

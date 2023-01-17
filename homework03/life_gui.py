@@ -31,8 +31,8 @@ class GUI(UI):
                 if el == 0:
                     pygame.draw.rect(
                         self.screen,
-                         pygame.Color("white"),
-                         (x, y, self.cell_size - 1, self.cell_size - 1),
+                        pygame.Color("white"),
+                        (x, y, self.cell_size - 1, self.cell_size - 1),
                     )
                 else:
                     pygame.draw.rect(
