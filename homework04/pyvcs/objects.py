@@ -12,7 +12,22 @@ from pyvcs.repo import repo_find
 
 def hash_object(data: bytes, fmt: str, write: bool = False) -> str:
     # PUT YOUR CODE HERE
-    ...
+    store = f"{fmt} {len(data)}\0".encode() + data
+
+    hash_sha1 = hashlib.sha1(store).hexdigest()
+
+    if write:
+        path = pathlib.Path(repo_find() / "objects" / hash_sha1[:2])
+
+        if not path.exists():
+            path.mkdir(parents=True)
+
+        file = pathlib.Path(path / hash_sha1[2:])
+
+        if not file.exists():
+            file.write_bytes(zlib.compress(store))
+
+    return hash_sha1
 
 
 def resolve_object(obj_name: str, gitdir: pathlib.Path) -> tp.List[str]:
