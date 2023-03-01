@@ -76,7 +76,7 @@ def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
     ind = obj_data.find(b"\x00")
     header = obj_data[:ind]
     fmt = header[: header.find(b" ")]
-    data = obj_data[(ind + 1):]
+    data = obj_data[(ind + 1) :]
 
     return fmt.decode(), data
 
@@ -106,11 +106,11 @@ def cat_file(obj_name: str, pretty: bool = True) -> None:
         result = ""
         for tree_item in read_tree(data):
             result += "{filemode:0>6} {obj_type} {sha1}\t{filename}\n".format(
-                    filemode=tree_item[0],
-                    obj_type=tree_item[1],
-                    sha1=tree_item[2],
-                    filename=tree_item[3],
-                )
+                filemode=tree_item[0],
+                obj_type=tree_item[1],
+                sha1=tree_item[2],
+                filename=tree_item[3],
+            )
         print(result)
     elif fmt == "blob":
         print(data.decode())
