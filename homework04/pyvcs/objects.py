@@ -76,7 +76,7 @@ def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
     ind = obj_data.find(b"\x00")
     header = obj_data[:ind]
     fmt = header[: header.find(b" ")]
-    data = obj_data[(ind + 1) :]
+    data = obj_data[(ind + 1):]
 
     return fmt.decode(), data
 
@@ -94,18 +94,7 @@ def read_tree(data: bytes) -> tp.List[tp.Tuple[int, str, str]]:
         sha1_str = sha1.hex()
         fmt, _ = read_object(sha1_str, repo_find())
         ans.append((filemode, fmt, sha1_str, filename))
-
-    result = list()
-    for tree_item in ans:
-        result.append(
-            "{filemode:0>6} {obj_type} {sha1}\t{filename}".format(
-                filemode=tree_item[0],
-                obj_type=tree_item[1],
-                sha1=tree_item[2],
-                filename=tree_item[3],
-            )
-        )
-    return "\n".join(result)
+    return ans
 
 
 def cat_file(obj_name: str, pretty: bool = True) -> None:
@@ -114,7 +103,15 @@ def cat_file(obj_name: str, pretty: bool = True) -> None:
     if fmt == "commit":
         print(commit_parse(data))
     elif fmt == "tree":
-        print(read_tree(data))
+        result = ""
+        for tree_item in read_tree(data):
+            result += "{filemode:0>6} {obj_type} {sha1}\t{filename}\n".format(
+                    filemode=tree_item[0],
+                    obj_type=tree_item[1],
+                    sha1=tree_item[2],
+                    filename=tree_item[3],
+                )
+        print(result)
     elif fmt == "blob":
         print(data.decode())
     else:
@@ -129,8 +126,8 @@ def find_tree_files(tree_sha: str, gitdir: pathlib.Path) -> tp.List[tp.Tuple[str
     if fmt != "tree":
         raise Exception(f"Not a tree {tree_sha}")
 
-    tree_items = read_tree(data).split("\n")
-    ans = [(name, sha) for _, _, sha, name in map(lambda x: x.split(), tree_items)]
+    tree_items = read_tree(data)
+    ans = [(name, sha) for _, _, sha, name in map(lambda x: x, tree_items)]
     return ans
     ...
 
