@@ -83,18 +83,17 @@ def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
 
 def read_tree(data: bytes) -> tp.List[tp.Tuple[int, str, str]]:
     # PUT YOUR CODE HERE
-    contents = data
-    ans = []
-    while contents != b"":
-        filemode_bytes, contents_bytes = contents.split(b" ", maxsplit=1)
-        filename_bytes, contents_bytes = contents_bytes.split(b"\x00", maxsplit=1)
-        sha1, contents = contents_bytes[:20], contents_bytes[20:]
-        filemode = filemode_bytes.decode()
-        filename = filename_bytes.decode()
-        sha1_str = sha1.hex()
-        fmt, _ = read_object(sha1_str, repo_find())
-        ans.append((filemode, fmt, sha1_str, filename))
-    return ans
+    result = []
+    while len(data) > 0:
+        mode = int(data[: data.find(b" ")].decode())
+        data = data[data.find(b" ") + 1 :]
+        name = data[: data.find(b"\x00")].decode()
+        data = data[data.find(b"\x00") + 1 :]
+        sha = bytes.hex(data[:20])
+        data = data[20:]
+        tup = mode, name, sha
+        result.append(tup)
+    return result
 
 
 def cat_file(obj_name: str, pretty: bool = True) -> None:
@@ -105,11 +104,12 @@ def cat_file(obj_name: str, pretty: bool = True) -> None:
     elif fmt == "tree":
         result = ""
         for tree_item in read_tree(data):
+            object_type, _ = read_object(tree_item[2], repo_find())
             result += "{filemode:0>6} {obj_type} {sha1}\t{filename}\n".format(
                 filemode=tree_item[0],
-                obj_type=tree_item[1],
+                obj_type=object_type,
                 sha1=tree_item[2],
-                filename=tree_item[3],
+                filename=tree_item[1],
             )
         print(result)
     elif fmt == "blob":
@@ -127,9 +127,8 @@ def find_tree_files(tree_sha: str, gitdir: pathlib.Path) -> tp.List[tp.Tuple[str
         raise Exception(f"Not a tree {tree_sha}")
 
     tree_items = read_tree(data)
-    ans = [(name, sha) for _, _, sha, name in map(lambda x: x, tree_items)]
+    ans = [(name, sha) for _, sha, name in tree_items]
     return ans
-    ...
 
 
 def commit_parse(raw: bytes, start: int = 0, dct=None):

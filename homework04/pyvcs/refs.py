@@ -51,4 +51,3 @@ def get_ref(gitdir: pathlib.Path) -> str:
             return data.split()[1]
         else:
             return data.strip()
-    ...

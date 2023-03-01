@@ -68,8 +68,8 @@ def checkout(gitdir: pathlib.Path, obj_name: str) -> None:
                 f.write(read_object(sha, gitdir)[1])
     for name, sha in tracked_files.items():
         if name not in checking_files.keys():
-            if os.path.isfile(name):
-                os.remove(name)
+            if os.path.isfile(sha):
+                os.remove(sha)
             else:
-                shutil.rmtree(name)
+                shutil.rmtree(sha)
     ...
