@@ -37,10 +37,6 @@ def commit_tree(
     commit_time = int(time.mktime(time.localtime()))
     commit_timezone = time.strftime("%z", time.localtime())
     parent_str = f"\nparent {parent}" if parent else ""
-    content = (
-        f"tree {tree}"
-        + parent_str
-        + f"\nauthor {author} {commit_time} {commit_timezone}\ncommitter {author} {commit_time} {commit_timezone}\n\n{message}\n"
-    )
+    content =  f"tree {tree}" + parent_str + f"\nauthor {author} {commit_time} {commit_timezone}\ncommitter {author} {commit_time} {commit_timezone}\n\n{message}\n"
     commit_sha = hash_object(content.encode(), "commit", write=True)
     return commit_sha
