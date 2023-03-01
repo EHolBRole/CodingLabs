@@ -30,7 +30,14 @@ def repo_create(workdir: tp.Union[str, pathlib.Path]) -> pathlib.Path:
     repo_dir = pathlib.Path(workdir / os.environ.get("GIT_DIR", ".git"))
     os.mkdir(repo_dir)
 
-    standart_repo_subdirs = ["branches", "objects", "objects/pack", "refs", "refs/heads", "refs/tags"]
+    standart_repo_subdirs = [
+        "branches",
+        "objects",
+        "objects/pack",
+        "refs",
+        "refs/heads",
+        "refs/tags",
+    ]
 
     for subdir in standart_repo_subdirs:
         os.mkdir(repo_dir / subdir)
@@ -38,7 +45,9 @@ def repo_create(workdir: tp.Union[str, pathlib.Path]) -> pathlib.Path:
     with open(repo_dir / "HEAD", "w+") as f:
         f.write("ref: refs/heads/master\n")
     with open(repo_dir / "config", "w+") as f:
-        f.write("[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n\tbare = false\n\tlogallrefupdates = false\n")
+        f.write(
+            "[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n\tbare = false\n\tlogallrefupdates = false\n"
+        )
     with open(repo_dir / "description", "w+") as f:
         f.write("Unnamed pyvcs repository.\n")
 

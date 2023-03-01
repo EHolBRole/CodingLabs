@@ -43,7 +43,7 @@ def resolve_object(obj_name: str, gitdir: pathlib.Path) -> tp.List[str]:
         for d in pathlib.Path(gitdir / "objects").iterdir():
             if d.is_dir() and d.name == obj_name[:2]:
                 for f in d.iterdir():
-                    if f.name[:len(obj_name[2:])] == obj_name[2:]:
+                    if f.name[: len(obj_name[2:])] == obj_name[2:]:
                         objects.append(str(d.name + f.name))
     else:
         raise Exception(f"Not a {gitdir} Repository")
@@ -60,7 +60,7 @@ def find_object(obj_name: str, gitdir: pathlib.Path) -> str:
         for d in pathlib.Path(gitdir / "objects").iterdir():
             if d.is_dir() and d.name == obj_name[:2]:
                 for f in d.iterdir():
-                    if f.name[:len(obj_name[2:])] == obj_name[2:]:
+                    if f.name[: len(obj_name[2:])] == obj_name[2:]:
                         return str(d.name + f.name)
         raise Exception(f"Not a valid object name {obj_name}")
     else:
@@ -70,13 +70,13 @@ def find_object(obj_name: str, gitdir: pathlib.Path) -> str:
 def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
     # PUT YOUR CODE HERE
     object_path = pathlib.Path(gitdir / "objects" / sha[:2] / sha[2:])
-    with open(object_path, 'rb') as f:
+    with open(object_path, "rb") as f:
         obj_data = zlib.decompress(f.read())
 
     ind = obj_data.find(b"\x00")
     header = obj_data[:ind]
     fmt = header[: header.find(b" ")]
-    data = obj_data[(ind + 1):]
+    data = obj_data[(ind + 1) :]
 
     return fmt.decode(), data
 
