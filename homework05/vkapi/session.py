@@ -16,11 +16,11 @@ class Session:
     """
 
     def __init__(
-            self,
-            base_url: str,
-            timeout: float = 5.0,
-            max_retries: int = 3,
-            backoff_factor: float = 0.3,
+        self,
+        base_url: str,
+        timeout: float = 5.0,
+        max_retries: int = 3,
+        backoff_factor: float = 0.3,
     ) -> None:
         self.current_session = requests.session()
         retry_strategy = Retry(
@@ -29,12 +29,10 @@ class Session:
             status_forcelist=[429, 500, 502, 503, 504],
             allowed_methods=["HEAD", "GET", "OPTIONS"],
         )
-        adapter = HTTPAdapter(
-            max_retries=retry_strategy
-        )
-        self.current_session.mount(
-            base_url, adapter=adapter
-        )
+
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.current_session.mount(base_url, adapter=adapter)
+
         self.base_url = base_url
         self.timeout = timeout
 
