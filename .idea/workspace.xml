@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56cbec31-65fc-4536-9a70-3fb9428a439f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EHolBRole.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EHolBRole.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homework03/life_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework03/life_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homework03/life_proto.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework03/life_proto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework03/life_console.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework03/life_console.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework06/scraputils.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework06/scraputils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,26 +34,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ekhol/Documents/GitHub/EHolBRole/homework03/life.py&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;pyconsole&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/eholbrole",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "pyconsole"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ekhol\Documents\GitHub\EHolBRole\homework03\tests" />
       <recent name="C:\Users\ekhol\Documents\GitHub\EHolBRole\homework03" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.life_gui">
+  <component name="RunManager" selected="Python.life_console">
     <configuration name="life" type="PythonConfigurationType" factoryName="Python">
       <module name="EHolBRole" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -70,6 +71,27 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="life_console" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="EHolBRole" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/homework03" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/homework03/life_console.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -211,23 +233,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for homework03.tests.test_life_proto.TestGameOfLife" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="EHolBRole" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/homework03/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;homework03.tests.test_life_proto.TestGameOfLife&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="EHolBRole" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -266,20 +271,20 @@
       <item itemvalue="Python.life" />
       <item itemvalue="Python.python -m unittest discover" />
       <item itemvalue="Python.sudoku" />
+      <item itemvalue="Python.life_console" />
       <item itemvalue="Python.life_proto" />
       <item itemvalue="Python.life_gui" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life.TestGameOfLife" />
-      <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
       <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.life_console" />
         <item itemvalue="Python.life_gui" />
         <item itemvalue="Python.life_proto" />
         <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
         <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
-        <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife" />
       </list>
     </recent_temporary>
   </component>
