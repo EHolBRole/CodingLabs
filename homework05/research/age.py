@@ -27,4 +27,3 @@ def age_predict(user_id: int) -> tp.Optional[float]:
     if am > 0:
         return summ // am
     return None
-
