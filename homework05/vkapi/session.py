@@ -1,7 +1,7 @@
 import typing as tp
 
-import requests
-from requests.adapters import HTTPAdapter #ignore: import
+import requests  #import: ignore
+from requests.adapters import HTTPAdapter  #import: ignore
 from urllib3.util.retry import Retry
 
 
@@ -16,11 +16,11 @@ class Session:
     """
 
     def __init__(
-        self,
-        base_url: str,
-        timeout: float = 5.0,
-        max_retries: int = 3,
-        backoff_factor: float = 0.3,
+            self,
+            base_url: str,
+            timeout: float = 5.0,
+            max_retries: int = 3,
+            backoff_factor: float = 0.3,
     ) -> None:
         self.current_session = requests.session()
         retry_strategy = Retry(
