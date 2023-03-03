@@ -1,7 +1,7 @@
 import typing as tp
 
 import requests
-from requests.adapters import HTTPAdapter
+from requests.adapters import HTTPAdapter #ignore: import
 from urllib3.util.retry import Retry
 
 
