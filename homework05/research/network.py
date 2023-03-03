@@ -18,6 +18,15 @@ def ego_network(
     :param user_id: Идентификатор пользователя, для которого строится граф друзей.
     :param friends: Идентификаторы друзей, между которыми устанавливаются связи.
     """
+    answer = []
+    friend = get_mutual(user_id, None, friends)
+    for person in friend:
+        if person is not None:
+            for j in person["common_friends"]:  # type: ignore
+                answer.append((person["id"], j))  # type: ignore
+
+    print(answer)
+    return answer
     pass
 
 

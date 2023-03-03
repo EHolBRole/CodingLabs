@@ -28,7 +28,16 @@ def get_friends(
     :param fields: Список полей, которые нужно получить для каждого пользователя.
     :return: Список идентификаторов друзей пользователя или список пользователей.
     """
-    pass
+    friendsList = session.get(
+        "friends.get",
+        user_id=user_id,
+        count=count,
+        offset=offset,
+        fields=fields,
+        v=config.VK_CONFIG["version"],
+        access_token=config.VK_CONFIG["access_token"],
+    ).json()["response"]
+    return FriendsResponse(friendsList["count"], friendsList["items"])
 
 
 class MutualFriends(tp.TypedDict):
@@ -57,4 +66,24 @@ def get_mutual(
     :param offset: Смещение, необходимое для выборки определенного подмножества общих друзей.
     :param progress: Callback для отображения прогресса.
     """
-    pass
+    answer = list()
+    ln = 1
+    if target_uids is not None:
+        ln = (int(len(target_uids)) + 99) // 100
+
+    for i in range(0, ln):
+        answer += session.get(
+            "friends.getMutual",
+            source_uid=source_uid,
+            target_uid=target_uid,
+            target_uids=target_uids,
+            order=order,
+            count=count,
+            offset=i * 100,
+            v=config.VK_CONFIG["version"],
+            access_token=config.VK_CONFIG["access_token"],
+        ).json()["response"]
+        if i % 3 == 2:
+            time.sleep(1)
+
+    return answer

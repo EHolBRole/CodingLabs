@@ -2,7 +2,7 @@ import typing as tp
 
 import requests
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util.retry import Retry
 
 
 class Session:
@@ -16,16 +16,32 @@ class Session:
     """
 
     def __init__(
-        self,
-        base_url: str,
-        timeout: float = 5.0,
-        max_retries: int = 3,
-        backoff_factor: float = 0.3,
+            self,
+            base_url: str,
+            timeout: float = 5.0,
+            max_retries: int = 3,
+            backoff_factor: float = 0.3,
     ) -> None:
-        pass
+        self.current_session = requests.session()
+        retry_strategy = Retry(
+            total=max_retries,
+            backoff_factor=backoff_factor,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["HEAD", "GET", "OPTIONS"],
+        )
+        adapter = HTTPAdapter(
+            max_retries=retry_strategy
+        )
+        self.current_session.mount(
+            base_url, adapter=adapter
+        )
+        self.base_url = base_url
+        self.timeout = timeout
 
     def get(self, url: str, *args: tp.Any, **kwargs: tp.Any) -> requests.Response:
-        pass
+        return self.current_session.get(
+            self.base_url + "/" + url, params=kwargs, timeout=self.timeout
+        )
 
     def post(self, url: str, *args: tp.Any, **kwargs: tp.Any) -> requests.Response:
-        pass
+        return self.current_session.post(self.base_url + "/" + url, data=kwargs)
