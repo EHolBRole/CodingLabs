@@ -27,7 +27,7 @@ class GitIndexEntry(tp.NamedTuple):
     def pack(self) -> bytes:
         # PUT YOUR CODE HERE
         return struct.pack(
-            f"!4L6i20sh{len(self.name)}s3x",
+            f"!6L4i{len(self.sha1)}sh{len(self.name)}s3x",
             *[
                 self.ctime_s,
                 self.ctime_n,
