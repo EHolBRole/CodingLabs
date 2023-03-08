@@ -67,9 +67,11 @@ def get_mutual(
     :param progress: Callback для отображения прогресса.
     """
     answer = list()
-    ln = 1
+
     if target_uids is not None:
         ln = (int(len(target_uids)) + 99) // 100
+    else:
+        ln = 1
 
     for i in range(0, ln):
         answer += session.get(
