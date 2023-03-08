@@ -15,8 +15,8 @@ def add(gitdir: pathlib.Path, paths: tp.List[pathlib.Path]) -> None:
     for path in paths:
         if path.is_dir():
             for root, dirs, files in os.walk(path):
-                for fily in files:
-                    index.append(pathlib.Path(root) / fily)
+                for file in files:
+                    index.append(pathlib.Path(root) / file)
         else:
             index.append(path)
     update_index(gitdir, index)
@@ -28,11 +28,9 @@ def commit(gitdir: pathlib.Path, message: str, author: tp.Optional[str] = None) 
     index = read_index(gitdir)
 
     tree = write_tree(gitdir, index)
-    commit = commit_tree(gitdir, tree, message, author=author)
+    comm = commit_tree(gitdir, tree, message, author=author)
     update_ref(gitdir, "HEAD", tree)
-    return commit
-
-    ...
+    return comm
 
 
 def checkout(gitdir: pathlib.Path, obj_name: str) -> None:

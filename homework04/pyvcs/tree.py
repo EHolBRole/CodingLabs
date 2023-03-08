@@ -18,8 +18,8 @@ def write_tree(gitdir: pathlib.Path, index: tp.List[GitIndexEntry], dirname: str
             num = f.name.find("/")
             dirname = f.name[:num]
             new_f = files + b" " + f.name[num + 1 :].encode() + b"\0" + f.sha1
-            hashh = bytes.fromhex(hash_object(new_f, fmt="tree", write=True))
-            tree += b"40000 " + dirname.encode() + b"\0" + hashh
+            hsh = bytes.fromhex(hash_object(new_f, fmt="tree", write=True))
+            tree += b"40000 " + dirname.encode() + b"\0" + hsh
         else:
             tree += files + b" " + f.name.encode() + b"\0" + f.sha1
     return hash_object(data=tree, fmt="tree", write=True)

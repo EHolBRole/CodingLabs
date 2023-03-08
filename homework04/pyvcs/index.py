@@ -27,7 +27,7 @@ class GitIndexEntry(tp.NamedTuple):
     def pack(self) -> bytes:
         # PUT YOUR CODE HERE
         return struct.pack(
-            f"!6L4i{len(self.sha1)}sh{len(self.name)}s3x",
+            f"!6L4i20sh{len(self.name)}s3x",
             *[
                 self.ctime_s,
                 self.ctime_n,
@@ -48,11 +48,10 @@ class GitIndexEntry(tp.NamedTuple):
     @staticmethod
     def unpack(data: bytes) -> "GitIndexEntry":
         # PUT YOUR CODE HERE
-        f = f"!4L6i20sh{len(data) - 62}s"
-        unpacked = list(struct.unpack(f, data))
+        fmt = f"!6L4i20sh{len(data) - 62}s"
+        unpacked = list(struct.unpack(fmt, data))
         unpacked[-1] = unpacked[-1][:-3].decode()
         return GitIndexEntry(*unpacked)
-        ...
 
 
 def read_index(gitdir: pathlib.Path) -> tp.List[GitIndexEntry]:
@@ -73,18 +72,17 @@ def read_index(gitdir: pathlib.Path) -> tp.List[GitIndexEntry]:
         result.append(GitIndexEntry.unpack(inf[count:end]))
         count = end
     return result
-    ...
 
 
 def write_index(gitdir: pathlib.Path, entries: tp.List[GitIndexEntry]) -> None:
     # PUT YOUR CODE HERE
     with open(gitdir / "index", "wb") as file:
-        hashh = struct.pack("!4s2i", *(b"DIRC", 2, len(entries)))
-        file.write(hashh)
+        hsh = struct.pack("!4s2i", *(b"DIRC", 2, len(entries)))
+        file.write(hsh)
         for entry in entries:
             file.write(entry.pack())
-            hashh += entry.pack()
-        hash2 = str(hashlib.sha1(hashh).hexdigest())
+            hsh += entry.pack()
+        hash2 = str(hashlib.sha1(hsh).hexdigest())
         file.write(struct.pack(f"!{len(bytes.fromhex(hash2))}s", bytes.fromhex(hash2)))
 
     ...
