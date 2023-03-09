@@ -2,6 +2,20 @@ from sqlalchemy import Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from scraputils import get_news
+
+
+def fill(dictionary):
+    s = session()
+    news = News(
+        title=dictionary["title"],
+        author=dictionary["author"],
+        url=dictionary["url"],
+        comments=dictionary["comments"],
+        points=dictionary["points"],
+    )
+    s.add(news)
+    s.commit()
 
 
 Base = declarative_base()
@@ -19,4 +33,19 @@ class News(Base):
     points = Column(Integer)
     label = Column(String)
 
+
 Base.metadata.create_all(bind=engine)
+
+if __name__ == "__main__":
+    list = get_news(url="https://news.ycombinator.com/newest", n_pages=2)
+    s = session()
+    for i in range(len(list)):
+        news = News(
+            title=list[i]["title"],
+            author=list[i]["author"],
+            url=list[i]["url"],
+            comments=list[i]["comments"],
+            points=list[i]["points"],
+        )
+        s.add(news)
+    s.commit()
