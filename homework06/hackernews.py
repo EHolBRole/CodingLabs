@@ -19,7 +19,7 @@ def prepare(s):
 def news_list():
     s = session()
     rows = s.query(News).filter(News.label == None).all()
-    return template('news_template', rows=rows)
+    return template("news_template", rows=rows)
 
 
 @route("/add_label/")
@@ -83,7 +83,7 @@ def classify_news():
     for news in classified_news:
         s.add(news)
         s.commit()
-    return template('news_template', rows=classified_news)
+    return template("news_template", rows=classified_news)
 
 
 @route("/recommendations")
@@ -96,12 +96,12 @@ def recommendations():
     for i in range(len(news)):
         news[i].label = y[i]
     s.commit()
-    return template('news_template', rows=news)
+    return template("news_template", rows=news)
 
 
 @route("/")
 def root():
-    redirect('/news')
+    redirect("/news")
 
 
 if __name__ == "__main__":
