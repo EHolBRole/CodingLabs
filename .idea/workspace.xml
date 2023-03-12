@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56cbec31-65fc-4536-9a70-3fb9428a439f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/homework06/bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework06/bayes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homework06/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework06/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homework06/hackernews.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework06/hackernews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework06/news.db" beforeDir="false" afterPath="$PROJECT_DIR$/homework06/news.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,6 +278,8 @@
       <item itemvalue="Python.life_proto" />
       <item itemvalue="Python.life_gui" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life.TestGameOfLife" />
+      <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife" />
+      <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
       <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
     </list>
     <recent_temporary>
@@ -319,6 +321,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/homework06/hackernews.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EHolBRole$Doctests_in_rsa.coverage" NAME="Doctests in rsa Coverage Results" MODIFIED="1673795023088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/homework01" />

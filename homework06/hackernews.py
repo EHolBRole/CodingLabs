@@ -73,13 +73,19 @@ def classify_news():
     third_priority = []
     for i, row in enumerate(unlabeled):
         if predictions[i] == "good":
+            row.label = "good"
             classified_news.append(row)
         elif predictions[i] == "maybe":
+            row.label = "maybe"
             second_priority.append(row)
         else:
+            row.label = "never"
             third_priority.append(row)
     classified_news.extend(second_priority)
     classified_news.extend(third_priority)
+    for news in classified_news:
+        s.add(news)
+        s.commit()
     return template('news_template', rows=classified_news)
 
 
