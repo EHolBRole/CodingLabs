@@ -1,14 +1,12 @@
 import string
 
-from bottle import (
-    route, run, template, request, redirect
-)
 
 import nltk
 import sqlalchemy.exc
-from scraputils import get_news
-from db import News, session, fill
 from bayes import NaiveBayesClassifier
+from bottle import route, run, template, request, redirect
+from db import News, session, fill
+from scraputils import get_news
 
 
 def prepare(s):
