@@ -264,14 +264,14 @@
     </configuration>
     <list>
       <item itemvalue="Python.life" />
+      <item itemvalue="Python.life_gui" />
+      <item itemvalue="Python.life_proto" />
       <item itemvalue="Python.python -m unittest discover" />
       <item itemvalue="Python.sudoku" />
-      <item itemvalue="Python.life_proto" />
-      <item itemvalue="Python.life_gui" />
+      <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life.TestGameOfLife" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife" />
       <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
-      <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
     </list>
     <recent_temporary>
       <list>
