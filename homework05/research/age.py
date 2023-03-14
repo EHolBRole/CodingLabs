@@ -14,16 +14,16 @@ def age_predict(user_id: int) -> tp.Optional[float]:
     :param user_id: Идентификатор пользователя.
     :return: Медианный возраст пользователя.
     """
-    am = 0
+    count = 0
     summ = 0
     friends = get_friends(user_id).items
-    currage = dt.datetime.now().year
+    curr_year = dt.datetime.now().year
     for i in friends:
         try:
-            summ += int(currage - int(i["bdate"][5:]))  # type: ignore
-            am += 1
+            summ += int(curr_year - int(i["bdate"][5:]))  # type: ignore
+            count += 1
         except:
             pass
-    if am > 0:
-        return summ / am
+    if count > 0:
+        return summ / count
     return None

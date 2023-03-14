@@ -69,11 +69,11 @@ def get_mutual(
     answer = list()
 
     if target_uids is not None:
-        ln = (int(len(target_uids)) + 99) // 100
+        mf_count = (int(len(target_uids)) + 99) // 100
     else:
-        ln = 1
+        mf_count = 1
 
-    for i in range(0, ln):
+    for i in range(0, mf_count):
         answer += session.get(
             "friends.getMutual",
             source_uid=source_uid,

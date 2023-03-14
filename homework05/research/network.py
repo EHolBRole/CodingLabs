@@ -24,9 +24,7 @@ def ego_network(
             for j in person["common_friends"]:  # type: ignore
                 answer.append((person["id"], j))  # type: ignore
 
-    print(answer)
     return answer
-    pass
 
 
 def plot_ego_network(net: tp.List[tp.Tuple[int, int]]) -> None:
