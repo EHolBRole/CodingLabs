@@ -49,4 +49,7 @@ def get_wall_execute(
     :param fields: Список дополнительных полей для профилей и сообществ, которые необходимо вернуть.
     :param progress: Callback для отображения прогресса.
     """
+
+
+    #input > "to, be or not to be"
     pass
