@@ -88,7 +88,7 @@ class GUI(UI):
         pass
 
 
-#game = GameOfLife(size=(25, 25), randomize=True)
-#gui = GUI(life=game, cell_size=20, speed=5)
-#gui.run()
+game = GameOfLife(size=(25, 25), randomize=True)
+gui = GUI(life=game, cell_size=20, speed=5)
+gui.run()
 
