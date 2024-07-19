@@ -1,0 +1,81 @@
+Index: homework05/research/age.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/homework05/research/age.py b/homework05/research/age.py
+--- a/homework05/research/age.py	
++++ b/homework05/research/age.py	
+@@ -14,16 +14,18 @@
+     :param user_id: Идентификатор пользователя.
+     :return: Медианный возраст пользователя.
+     """
+-    am = 0
+-    summ = 0
++    friends_count = 0
++    sum_of_age = 0
+     friends = get_friends(user_id).items
+-    currage = dt.datetime.now().year
++    curr_age = dt.datetime.now().year
++
+     for i in friends:
+         try:
+-            summ += int(currage - int(i["bdate"][5:]))  # type: ignore
+-            am += 1
++            sum_of_age += int(curr_age - int(i["bdate"][5:]))  # type: ignore
++            friends_count += 1
+         except:
+             pass
+-    if am > 0:
+-        return summ / am
++    if friends_count > 0:
++        return sum_of_age / friends_count
++
+     return None
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -7,8 +7,6 @@
+     <list default="true" id="56cbec31-65fc-4536-9a70-3fb9428a439f" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/homework05/research/age.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework05/research/age.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/homework05/vkapi/friends.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework05/vkapi/friends.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/homework05/vkapi/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework05/vkapi/session.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -23,6 +21,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="homework03" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -264,14 +267,14 @@
+     </configuration>
+     <list>
+       <item itemvalue="Python.life" />
+-      <item itemvalue="Python.life_gui" />
+-      <item itemvalue="Python.life_proto" />
+       <item itemvalue="Python.python -m unittest discover" />
+       <item itemvalue="Python.sudoku" />
+-      <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
++      <item itemvalue="Python.life_proto" />
++      <item itemvalue="Python.life_gui" />
+       <item itemvalue="Python tests.pytest for homework03.tests.test_life.TestGameOfLife" />
+       <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife" />
+       <item itemvalue="Python tests.pytest for homework03.tests.test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
++      <item itemvalue="Python tests.Python tests for test_life_proto.TestGameOfLife.test_can_create_an_empty_grid" />
+     </list>
+     <recent_temporary>
+       <list>
